@@ -5,9 +5,9 @@
 </p>
 
 ## Featur of coffee bot
-* brief introdution to speciaty coffee
-* step-by-step instruction to help yo make a cup of hand pour coffee (can choose between three kind of technique which emphasized different favor)
-* find what you want to find on ptt coffee forum (using web crawling technique)	 
+* Brief introdution to speciaty coffee
+* Step-by-step instruction to help you make a cup of hand pour coffee (can choose between three kind of technique which emphasized different favor)
+* Find what you want to find on ptt coffee forum (using web crawling technique)	 
 
 ## FSM
 <p align=center>
@@ -29,7 +29,7 @@ We provide three modes: more sourness, more sweetness, or other.
 
 ### ptt web crawling
 If you are interested of the newest trend in Taiwan, you should always watch ptt.\
-coffee bot provides the function of searching articles on ptt.\
+Coffee bot provides the function of searching articles on ptt.\
 User can find what they want by pressing the keyword on the button or type in their desired key word.
 
 
