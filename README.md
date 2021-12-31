@@ -1,9 +1,5 @@
 # TOC Project 2021 - coffee bot
 
-<p align=center>
-    <img src="my_state_diagram.png">
-</p>
-
 ## Featur of coffee bot
 * Brief introdution to speciaty coffee
 * Step-by-step instruction to help you make a cup of hand pour coffee (can choose between three kind of technique which emphasized different favor)
