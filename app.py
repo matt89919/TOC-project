@@ -8,29 +8,214 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
-from utils import send_text_message
+from utils import *
 
 load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=["start", "menu", "intro", "helpermenu", "input", "web", "mode1", "mode2", "mode3",
+            "roast", "method", "country", "l", "m", "d", "washed", "natural", "honey", "africa", "asia", "ca",
+            "aftercountry","afterhelper", "premode"],
     transitions=[
         {
             "trigger": "advance",
-            "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
+            "source": "start",
+            "dest": "menu",
+            "conditions": "start_to_menu",
         },
         {
             "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
+            "source": "menu",
+            "dest": "intro",
+            "conditions": "menu_to_intro",
         },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+        {
+            "trigger": "advance",
+            "source": "intro",
+            "dest": "roast",
+            "conditions": "intro_to_roast",
+        },
+        {
+            "trigger": "advance",
+            "source": "roast",
+            "dest": "l",
+            "conditions": "roast_to_l",
+        },
+        {
+            "trigger": "advance",
+            "source": "roast",
+            "dest": "m",
+            "conditions": "roast_to_m",
+        },
+        {
+            "trigger": "advance",
+            "source": "roast",
+            "dest": "d",
+            "conditions": "roast_to_d",
+        },
+        {
+            "trigger": "advance",
+            "source": "intro",
+            "dest": "method",
+            "conditions": "intro_to_method",  
+        },
+        {
+            "trigger": "advance",
+            "source": "method",
+            "dest": "washed",
+            "conditions": "method_to_washed",  
+        },
+        {
+            "trigger": "advance",
+            "source": "method",
+            "dest": "honey",
+            "conditions": "method_to_honey",  
+        },
+        {
+            "trigger": "advance",
+            "source": "method",
+            "dest": "natural",
+            "conditions": "method_to_natural",  
+        },
+        {
+            "trigger": "advance",
+            "source": "intro",
+            "dest": "country",
+            "conditions": "intro_to_country",   
+        },
+        {
+            "trigger": "advance",
+            "source": "country",
+            "dest": "asia",
+            "conditions": "country_to_asia",   
+        },
+        {
+            "trigger": "advance",
+            "source": "country",
+            "dest": "africa",
+            "conditions": "country_to_africa",   
+        },
+        {
+            "trigger": "advance",
+            "source": "country",
+            "dest": "ca",
+            "conditions": "country_to_ca",   
+        },
+        {
+            "trigger": "go_back",
+            "source": ["africa","asia","ca", "l", "m", "d", "washed", "natural", "honey"],
+            "dest": "aftercountry", 
+        },
+        {
+            "trigger": "advance",
+            "source": "aftercountry",
+            "dest": "premode",
+            "conditions": "after_to_helper",   
+        },
+        {
+            "trigger": "advance",
+            "source": "aftercountry",
+            "dest": "intro",
+            "conditions": "after_to_intro",   
+        },
+        {
+            "trigger": "advance",
+            "source": "aftercountry",
+            "dest": "menu",
+            "conditions": "after_to_menu",   
+        },
+        {
+            "trigger": "advance",
+            "source": "menu",
+            "dest": "premode",
+            "conditions": "menu_to_helpermenu",
+        },
+        {
+            "trigger": "advance",
+            "source": "premode",
+            "dest": "helpermenu",
+            "conditions": "premode_to_helpermenu",
+        },
+        {
+            "trigger": "advance",
+            "source": "helpermenu",
+            "dest": "mode1",
+            "conditions": "helpermenu_to_mode1",
+        },
+        {
+            "trigger": "advance",
+            "source": "helpermenu",
+            "dest": "mode2",
+            "conditions": "helpermenu_to_mode2",
+        },
+        {
+            "trigger": "advance",
+            "source": "helpermenu",
+            "dest": "mode3",
+            "conditions": "helpermenu_to_mode3",  
+        },
+        {
+            "trigger": "advance",
+            "source": "menu",
+            "dest": "input",
+            "conditions": "menu_to_input",
+        },
+        {
+            "trigger": "advance",
+            "source": "input",
+            "dest": "web",
+            "conditions": "input_to_web",
+        },
+        {
+            "trigger": "advance",
+            "source": "premode",
+            "dest": "menu",
+            "conditions": "backto_menu",
+        },
+        {
+            "trigger": "advance",
+            "source": "afterhelper",
+            "dest": "intro",
+            "conditions": "afterhelper_to_intro",
+        },
+        {
+            "trigger": "advance",
+            "source": "afterhelper",
+            "dest": "input",
+            "conditions": "afterhelper_to_web",
+        },
+        {
+            "trigger": "advance",
+            "source": "afterhelper",
+            "dest": "menu",
+            "conditions": "afterhelper_to_menu",
+        },
+        {
+            "trigger": "go_back", 
+            "source": "web", 
+            "dest": "menu", 
+        },
+        {
+            "trigger": "go_back", 
+            "source": ["mode1", "mode2", "mode3"], 
+            "dest": "afterhelper", 
+        },
+        {
+            "trigger": "advance", 
+            "source": ["country", "method", "roast"], 
+            "dest": "intro",   
+            "conditions":"backto_intro"
+        },
+        {
+            "trigger": "advance", 
+            "source": ["intro", "input", "helpermenu"], 
+            "dest": "menu",   
+            "conditions":"backto_menu"
+        },
+        
     ],
-    initial="user",
+    initial="start",
     auto_transitions=False,
     show_conditions=True,
 )
