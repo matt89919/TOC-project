@@ -14,22 +14,22 @@
     <img src="my_state_diagram.png">
 </p>
 
-## funtion detail
+## Funtion detail
 elaborate the funtion of coffee bot
 
 ### introduction
-From seed to cup, any cup of coffee has a very complicated process before you drink it.
-Briefly cutting into three main part, it is planting country, process and roast.
-The coffee bot dive into the three main part and introduce to user.
+From seed to cup, any cup of coffee has a very complicated process before you drink it.\
+Briefly cutting into three main part, it is planting country, process and roast.\
+The coffee bot dive into the three main part and introduce to user.\
 Also, in each part, we provide different options of information for user.
 
 ### hand pour helper
-In this section, the coffee bot is going to help you to make a cup of coffee step-by-step.
+In this section, the coffee bot is going to help you to make a cup of coffee step-by-step.\
 We provide three modes: more sourness, more sweetness, or other.
 
 ### ptt web crawling
-If you are interested of the newest trend in Taiwan, you should always watch ptt.
-coffee bot provides the function of searching articles on ptt.
+If you are interested of the newest trend in Taiwan, you should always watch ptt.\
+coffee bot provides the function of searching articles on ptt.\
 User can find what they want by pressing the keyword on the button or type in their desired key word.
 
 
