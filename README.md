@@ -2,7 +2,7 @@
 
 ## Featur of coffee bot
 * Brief introdution to speciaty coffee
-* Step-by-step instruction to help you make a cup of hand pour coffee (can choose between three kind of technique which emphasized different favor)
+* Step-by-step instruction to help you make a cup of hand pour coffee (can choose between three kind of technique which emphasized different flavor)
 * Find what you want to find on ptt coffee forum (using web crawling technique)	 
 
 ## FSM
